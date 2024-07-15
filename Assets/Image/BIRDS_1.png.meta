@@ -3,7 +3,7 @@ guid: 2abf8baeaecf1418db2efe366d06e5bb
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
-  serializedVersion: 12
+  serializedVersion: 13
   mipmaps:
     mipMapMode: 0
     enableMipMap: 0
@@ -693,10 +693,10 @@ TextureImporter:
       name: BIRDS_1_27
       rect:
         serializedVersion: 2
-        x: 375
+        x: 303
         y: 711
-        width: 72
-        height: 76
+        width: 144
+        height: 130
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -777,10 +777,10 @@ TextureImporter:
       name: BIRDS_1_31
       rect:
         serializedVersion: 2
-        x: 243
+        x: 169
         y: 703
-        width: 59
-        height: 43
+        width: 133
+        height: 137
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -840,10 +840,10 @@ TextureImporter:
       name: BIRDS_1_34
       rect:
         serializedVersion: 2
-        x: 515
+        x: 448
         y: 719
-        width: 52
-        height: 37
+        width: 129
+        height: 122
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -1617,12 +1617,12 @@ TextureImporter:
       name: BIRDS_1_71
       rect:
         serializedVersion: 2
-        x: 54
-        y: 483
-        width: 104
-        height: 47
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+        x: 40
+        y: 407
+        width: 127
+        height: 123
+      alignment: 9
+      pivot: {x: 0.50000006, y: 0.4999987}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []

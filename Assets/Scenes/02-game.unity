@@ -38,7 +38,6 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0, g: 0, b: 0, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -1711,6 +1710,8 @@ MonoBehaviour:
   maxSpeed: 10
   minSpeed: 5
   hurtImgSrc: {fileID: -1898489609, guid: 2abf8baeaecf1418db2efe366d06e5bb, type: 3}
+  boom: {fileID: 371444543502612345, guid: 66214318907aa4df1ae1ee9fe24a5f0c, type: 3}
+  score: {fileID: 5558631653570229173, guid: 15a4dfdd789e1470a9a0e70d168f8f1f, type: 3}
 --- !u!1 &1546449274
 GameObject:
   m_ObjectHideFlags: 0

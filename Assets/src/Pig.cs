@@ -15,6 +15,12 @@ public class Pig : MonoBehaviour {
   // 受伤图(public才会展示到U3d Script组件的属性上, 允许直接拖拽图片赋值)
   public Sprite hurtImgSrc;
 
+  // 爆炸特效
+  public GameObject boom;
+
+  // 加分特效
+  public GameObject score;
+
   private void Awake() {
     // 获取小猪身上挂载的 SpriteRenderer 组件
     renderer = GetComponent<SpriteRenderer>();
@@ -33,12 +39,22 @@ public class Pig : MonoBehaviour {
     if (currentRelativeSpeed > maxSpeed) {
       // 死亡(直接移除模型即可)
       // TODO 缺少死亡动画播放
-      Destroy(gameObject);
+      Dead();
     } else if (currentRelativeSpeed > minSpeed && currentRelativeSpeed < maxSpeed) {
       // 受伤(更换图片到受伤图片)
       renderer.sprite = hurtImgSrc;
     } else {
       // 什么也不发生
     }
+  }
+
+  private void Dead() {
+    Destroy(gameObject);
+    // 生成Boom特效, 位置为当前位置, 不进行旋转
+    Instantiate(boom, transform.position, Quaternion.identity);
+    // 生成加分特效
+    GameObject go = Instantiate(score, transform.position + new Vector3(0, 0.8f, 0), Quaternion.identity);
+    // 1.5s后销毁
+    Destroy(go, 1.5f);
   }
 }
