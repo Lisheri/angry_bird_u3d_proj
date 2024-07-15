@@ -7,7 +7,9 @@ public class Bird : MonoBehaviour {
   private bool isClicked = false; // 是否处于点击状态
   public float maxDis = 3;
 
-  private SpringJoint2D sp;
+  // 允许脚本访问， 但不允许面板展示
+  [HideInInspector]
+  public SpringJoint2D sp;
 
   private Rigidbody2D rg;
 
@@ -16,6 +18,9 @@ public class Bird : MonoBehaviour {
   public LineRenderer leftLine;
   public Transform rightPos;
   public Transform leftPos;
+
+  // 小鸟销毁特效
+  public GameObject boom;
 
   // 场景激活钩子
   private void Awake() {
@@ -37,6 +42,7 @@ public class Bird : MonoBehaviour {
   private void Fly() {
     // 延迟弹簧组件失活时间, 用于计算弹射
     sp.enabled = false; // 禁用弹簧组件(SpringJoint2D)
+    Invoke("Next", 5); // 5s后下一只小鸟飞出
   }
 
   // 鼠标抬起时调用
@@ -44,6 +50,9 @@ public class Bird : MonoBehaviour {
     isClicked = false;
     // 松手时停止物理计算
     rg.isKinematic = false;
+    // 禁用划线组件
+    rightLine.enabled = false;
+    leftLine.enabled = false;
     Invoke("Fly", 0.1f);
     // 线条消失
   }
@@ -75,11 +84,24 @@ public class Bird : MonoBehaviour {
 
   // 划线
   private void Line() {
+    rightLine.enabled = true;
+    leftLine.enabled = true;
     // 右边, 划线
     rightLine.SetPosition(0, rightPos.position);
     rightLine.SetPosition(1, transform.position);
 
     leftLine.SetPosition(0, leftPos.position);
     leftLine.SetPosition(1, transform.position);
+  }
+
+  // 等待5s下一次轮换小鸟飞出
+  private void Next() {
+    // 从birds list中移除当前小鸟
+    GameManager._instance.birds.Remove(this);
+    // 销毁小鸟对象
+    Destroy(gameObject);
+    Instantiate(boom, transform.position, Quaternion.identity);
+    // 起飞下一只小鸟
+    GameManager._instance.NextBird();
   }
 }

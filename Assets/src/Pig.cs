@@ -21,6 +21,9 @@ public class Pig : MonoBehaviour {
   // 加分特效
   public GameObject score;
 
+  // Pig脚本和木块公用， 因此需要挂载一个变量确定是否为猪儿
+  public bool isPig = false;
+
   private void Awake() {
     // 获取小猪身上挂载的 SpriteRenderer 组件
     renderer = GetComponent<SpriteRenderer>();
@@ -49,6 +52,10 @@ public class Pig : MonoBehaviour {
   }
 
   private void Dead() {
+    if (isPig) {
+      // 删除猪儿
+      GameManager._instance.pigs.Remove(this);
+    }
     Destroy(gameObject);
     // 生成Boom特效, 位置为当前位置, 不进行旋转
     Instantiate(boom, transform.position, Quaternion.identity);
