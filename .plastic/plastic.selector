@@ -1,4 +1,0 @@
-repository "angry_bird_project@wechat_os_qy0y5fna4jnmzwgp8nknu4ohk@cloud.cn"
-  path "/"
-    br "/main"
-    co "/main"

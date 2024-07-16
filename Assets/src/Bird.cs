@@ -22,6 +22,10 @@ public class Bird : MonoBehaviour {
   // 小鸟销毁特效
   public GameObject boom;
 
+
+  // 持有小鸟身上的 TestMyTrail 组件
+  private TestMyTrail myTrail;
+
   // 场景激活钩子
   private void Awake() {
     // ? 调用 GetComponent API 均用于获取挂载到物体上的组件
@@ -29,6 +33,9 @@ public class Bird : MonoBehaviour {
     sp = GetComponent<SpringJoint2D>();
     // 获取 Rigidbody2D(刚体)组件
     rg = GetComponent<Rigidbody2D>();
+
+    // 获取拖尾组件
+    myTrail = GetComponent<TestMyTrail>();
   }
 
   // 鼠标按下时调用
@@ -43,6 +50,7 @@ public class Bird : MonoBehaviour {
     // 延迟弹簧组件失活时间, 用于计算弹射
     sp.enabled = false; // 禁用弹簧组件(SpringJoint2D)
     Invoke("Next", 5); // 5s后下一只小鸟飞出
+    myTrail.handleStartTrail(); // 开启拖尾
   }
 
   // 鼠标抬起时调用
@@ -92,6 +100,11 @@ public class Bird : MonoBehaviour {
 
     leftLine.SetPosition(0, leftPos.position);
     leftLine.SetPosition(1, transform.position);
+  }
+
+  // 结束碰撞
+  private void onCollisionEnter2D(Collision2D collision) {
+    myTrail.handleClearTrail();
   }
 
   // 等待5s下一次轮换小鸟飞出
